@@ -2,7 +2,7 @@
 Object-Oriented Programming Course
 ----------------------------------
 
->>>>>> json_parser <<<<<<
+JSON Parser
  * This program
    * takes in a file containing json text on standard input,
    * parses and formats it, and
