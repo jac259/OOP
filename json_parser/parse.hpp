@@ -61,8 +61,9 @@ std::string Parser::Print(std::unique_ptr<Value> value, int & depth) {
   switch(value->type()) {
 
   case literal: {
-    // Literals simply add their formatted value -- see value.hpp
-    ss << value->print();
+    // Literals are cast as Literal_Value and printed -- see value.hpp
+    std::unique_ptr<Literal_Value> lit(dynamic_cast<Literal_Value*>(value.release()));
+    ss << lit->print();
     break;
   }
     
@@ -144,7 +145,7 @@ void Parser::Parse(std::string text) {
   std::string::iterator l = text.end();
 
   // Parse each item in the document
-  // Typical documents have one root-level object/array but as per standards can have multiple
+  // Typical documents have one root-level object/array but as per standards can have multiple of any type
   while(f != l)
     items.push_back(Parse(f, l));
 

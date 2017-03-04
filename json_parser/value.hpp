@@ -20,13 +20,13 @@ enum Type {
 struct Value {
   virtual ~Value() = default;
   virtual int weight() const = 0;
-  virtual std::string print() {}
   virtual int type() const = 0;
 };
 
 // Intermediate class to define common behavior of all literals
 // Includes strings, numbers, true, false, and null
 struct Literal_Value : Value {
+  virtual std::string print() {}
   int weight() const { return 1; }
   int type() const { return literal; }
 };
