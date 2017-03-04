@@ -26,7 +26,7 @@ struct Value {
 // Intermediate class to define common behavior of all literals
 // Includes strings, numbers, true, false, and null
 struct Literal_Value : Value {
-  virtual std::string print() {}
+  virtual std::string print() = 0;
   int weight() const { return 1; }
   int type() const { return literal; }
 };
